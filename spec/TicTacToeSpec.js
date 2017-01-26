@@ -39,26 +39,17 @@ describe("TicTacToe", function(){
     expect(myGame.checkField([0, 1])).toEqual("O");
   })
 
-  it("should be able check to check if a row is occupied by same player", function(){
-    var field = new Field("X");
-    field.player = "X"
-    var row = [field, field, field];
-    expect(myGame.isSamePlayer(row)).toBeTruthy();
-  })
-
-  it("should be able check to check if a row is occupied by same player", function(){
-    fieldX = new Field("X");
-    fieldX.player = "X"
-    fieldO = new Field("O");
-    fieldO.player = "O"
-    var row = [fieldX, fieldO, fieldX];
-    expect(myGame.isSamePlayer(row)).toBeFalsy();
-  })
-
   it("should be able to know when a player has all of first row", function(){
     myGame.place([0,0]);
     myGame.place([0,1]);
     myGame.place([0,2]);
+    expect(myGame.isGameFinished()).toBeTruthy();
+  })
+
+  it("should be able to know when a player has crossing row top to bottom", function(){
+    myGame.place([0,0]);
+    myGame.place([1,1]);
+    myGame.place([2,2]);
     expect(myGame.isGameFinished()).toBeTruthy();
   })
 });
