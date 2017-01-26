@@ -7,6 +7,6 @@ describe("TicTacToe", function(){
   });
 
   it("should start with a board", function(){
-    expect(myGame.board).toBeTypeOf(Board)
+    expect(myGame.board).toEqual(jasmine.any(Board))
   });
 });
