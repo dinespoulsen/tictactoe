@@ -27,6 +27,7 @@ TicTacToe.prototype.place = function(placement){
   else {
     var field = this.findField(placement);
     field.place(this.isTurn());
+    this.changeTurn();
   }
 };
 
@@ -49,4 +50,8 @@ TicTacToe.prototype.isGameFinished = function(){
     }
   });
   return output;
+};
+
+TicTacToe.prototype.whoWon = function(row){
+  return row[0];
 };

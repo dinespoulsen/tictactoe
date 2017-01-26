@@ -18,8 +18,8 @@ describe("TicTacToe", function(){
     expect(myGame.isTurn().type).toEqual("X")
   })
 
-  it("should be able to change turn", function(){
-    myGame.changeTurn();
+  it("should be able to change turn when first field claimed", function(){
+    myGame.place([0,0])
     expect(myGame.isTurn().type).toEqual("O")
   })
 
@@ -34,7 +34,6 @@ describe("TicTacToe", function(){
 
   it("should be able to let player 2 claim a field", function(){
     myGame.place([0,0]);
-    myGame.changeTurn();
     myGame.place([0,1]);
     expect(myGame.checkField([0, 1])).toEqual("O");
   })
@@ -46,14 +45,21 @@ describe("TicTacToe", function(){
     expect(myGame.isGameFinished()).toBeTruthy();
   })
 
+  it("should be able to call out the winner", function(){
+    row = ["X", "X", "X"]
+    expect(myGame.whoWon(row)).toEqual("X");
+  })
+
   it("should be able to know when a player has crossing row top to bottom", function(){
     myGame.place([0,0]);
+    myGame.place([1,0]);
     myGame.place([1,1]);
+    myGame.place([1,2]);
     myGame.place([2,2]);
     expect(myGame.isGameFinished()).toBeTruthy();
   })
 
-  it("should return an error when trying to place when board is full", function(){
+  it("should return an error when game is over", function(){
     field = new Field();
     field.player = "X"
     myGame.board.fields = [[field, field, field], [field, field, field], [field, field, field]];
