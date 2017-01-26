@@ -24,3 +24,17 @@ TicTacToe.prototype.place = function(placement){
   var field = this.findField(placement);
   field.place(this.isTurn());
 };
+
+TicTacToe.prototype.isGameFinished = function(){
+  var firstRow = this.board.fields[0];
+  var output = true;
+  var name = [];
+  firstRow.forEach(function(field){
+    if(field.player === null) {
+      return false;
+    }
+    else {
+      name.push(field.player);
+    }
+  });
+};
