@@ -15,6 +15,6 @@ describe("TicTacToe", function(){
   });
 
   it("should start with player X", function(){
-    expect(myGame.isTurn).toEqual("X")
+    expect(myGame.isTurn()).toEqual("X")
   })
 });
