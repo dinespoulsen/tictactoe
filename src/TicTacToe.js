@@ -6,3 +6,7 @@ function TicTacToe(){
 TicTacToe.prototype.isTurn = function() {
   return this.players[0].type;
 };
+
+TicTacToe.prototype.changeTurn = function() {
+  this.players.reverse();
+};
