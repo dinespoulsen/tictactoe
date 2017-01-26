@@ -22,4 +22,8 @@ describe("TicTacToe", function(){
     myGame.changeTurn();
     expect(myGame.isTurn()).toEqual("O")
   })
+
+  // it("should be able to let a player claim a field", function(){
+  //   expect(myGame.board[0][0].toEqual("X");
+  // })
 });
