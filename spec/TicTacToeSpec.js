@@ -38,4 +38,11 @@ describe("TicTacToe", function(){
     myGame.place([0,1]);
     expect(myGame.checkField([0, 1])).toEqual("O");
   })
+
+  it("should be able to know when a player has all of first row", function(){
+    myGame.place([0,0]);
+    myGame.place([0,1]);
+    myGame.place([0,2]);
+    expect(myGame.isGameFinished()).toBeTruthy();
+  })
 });
