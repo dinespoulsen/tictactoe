@@ -64,7 +64,7 @@ describe("TicTacToe", function(){
     myGame.place([0,0]);
     myGame.place([0,1]);
     myGame.place([0,2]);
-    expect(myGame.isGameFinished()).toBeFalsy();
+    expect(myGame.isGameFinished()[0]).toBeFalsy();
   })
 
   it("should be able to call out the winner", function(){
@@ -78,7 +78,7 @@ describe("TicTacToe", function(){
     myGame.place([1,1]);
     myGame.place([1,2]);
     myGame.place([2,2]);
-    expect(myGame.isGameFinished()).toBeTruthy();
+    expect(myGame.isGameFinished()[0]).toBeTruthy();
   })
 
   it("should return an error when game is over", function(){

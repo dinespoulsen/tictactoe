@@ -1,6 +1,7 @@
 function TicTacToe(){
   this.board = new Board;
-  this.players = [new Player("X"), new Player("O")]
+  this.players = [new Player("X"), new Player("O")];
+  this.winner = null;
 };
 
 TicTacToe.prototype.isTurn = function() {
@@ -24,13 +25,16 @@ TicTacToe.prototype.place = function(placement){
   if(this.board.isFull()) {
     throw new Error("Can't place on the field: Board is full")
   }
-  else if(this.isGameFinished()) {
+  else if(this.isGameFinished()[0]) {
     throw new Error("Can't place on the field: Game has found its winner")
   }
   else {
     var field = this.findField(placement);
     field.place(this.isTurn());
     this.changeTurn();
+    if(this.winner !== null){
+      console.log("Winner is:" + this.winner);
+    }
   }
 };
 
@@ -45,14 +49,12 @@ TicTacToe.prototype.isSamePlayer = function(row){
 
 TicTacToe.prototype.isGameFinished = function(){
   var rows = this.board.possibleRows();
-  var output = false;
+  var output = [false];
   game = this
   rows.forEach(function(row){
     if(game.isSamePlayer(row)) {
-          return output = true;
-    }
-    else {
-      return row
+          game.winner = game.whoWon(row);
+          return output = [true, row];
     }
   });
   return output;
