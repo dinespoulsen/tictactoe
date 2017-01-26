@@ -6,30 +6,46 @@ describe("Board", function(){
     myBoard = new Board();
   });
 
-  it("should start with a board", function(){
+  var field = jasmine.createSpyObj('field', ['player', 'isTaken']);
+  field.player.and.callFake(function() {
+    return null;
+  });
+  field.isTaken.and.callFake(function() {
+    return false;
+  });
+
+  var fieldX = jasmine.createSpyObj('fieldX', ['player', 'isTaken']);
+  fieldX.player.and.callFake(function() {
+    return null;
+  });
+  fieldX.isTaken.and.callFake(function() {
+    return true;
+  });
+
+  var fieldO = jasmine.createSpyObj('fieldO', ['player', 'isTaken']);
+  fieldO.player.and.callFake(function() {
+    return null;
+  });
+  fieldO.isTaken.and.callFake(function() {
+    return true;
+  });
+
+
+  it("should start with a board with three field rows", function(){
     expect(myBoard.fields.length).toEqual(3)
   });
 
-  it("should be able check to check if a row is occupied by same player", function(){
-    var field = new Field();
-    field.player = "X"
-    var row = [field, field, field];
+  it("should be able to check if a row is occupied by same player", function(){
+    var row = [fieldX, fieldX, fieldX];
     expect(myBoard.isSamePlayer(row)).toBeTruthy();
   })
 
   it("should be able check to check if a row is occupied by same player", function(){
-    fieldX = new Field();
-    fieldX.player = "X"
-    fieldO = new Field();
-    fieldO.player = "O"
     var row = [fieldX, fieldO, fieldX];
     expect(myBoard.isSamePlayer(row)).toBeFalsy();
   })
 
   it("should be false when a board is not full", function(){
-    field = new Field();
-    fieldO = new Field();
-    fieldO.player = "O"
     myBoard.fields = [[fieldO, field, field], [field, field, field], [field, field, fieldO]];
     expect(myBoard.isFull()).toBeFalsy();
   })
