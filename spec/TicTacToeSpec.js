@@ -13,4 +13,8 @@ describe("TicTacToe", function(){
   it("should start with two players", function(){
     expect(myGame.players.length).toEqual(2);
   });
+
+  it("should start with player X", function(){
+    expect(myGame.isTurn).toEqual("X")
+  })
 });
