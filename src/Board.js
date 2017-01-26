@@ -23,3 +23,12 @@ Board.prototype.isSamePlayer = function(row){
   }
     return true;
 };
+
+Board.prototype.isFull = function(){
+  var output = false;
+  this.fields.forEach(function(row){
+    row.forEach(function(field){
+      console.log(field.isTaken());
+    });
+  });
+};

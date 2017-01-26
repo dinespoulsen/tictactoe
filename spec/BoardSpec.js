@@ -11,24 +11,33 @@ describe("Board", function(){
   });
 
   it("should be able check to check if a row is occupied by same player", function(){
-    var field = new Field("X");
+    var field = new Field();
     field.player = "X"
     var row = [field, field, field];
     expect(myBoard.isSamePlayer(row)).toBeTruthy();
   })
 
   it("should be able check to check if a row is occupied by same player", function(){
-    fieldX = new Field("X");
+    fieldX = new Field();
     fieldX.player = "X"
-    fieldO = new Field("O");
+    fieldO = new Field();
     fieldO.player = "O"
     var row = [fieldX, fieldO, fieldX];
     expect(myBoard.isSamePlayer(row)).toBeFalsy();
   })
 
+  it("should be false when a board is full", function(){
+    field = new Field();
+    fieldO = new Field();
+    fieldO.player = "O"
+    myBoard.fields = [[fieldO, field, field], [field, field, field], [field, field, fieldO]];
+    expect(myBoard.isFull()).toBeFalsy();
+  })
+
   it("should be true when a board is full", function(){
-    fieldX = new Field("X");
-    myBoard.fields = [[fieldX, fieldX, fieldX], [fieldX, fieldX, fieldX], [fieldX, fieldX, fieldX]];
-    expect(myBoard.isFull).toBeTruthy(); 
+    field = new Field();
+    field.player = "X"
+    myBoard.fields = [[field, field, field], [field, field, field], [field, field, fieldO]];
+    expect(myBoard.isFull()).toBeFalsy();
   })
 });
