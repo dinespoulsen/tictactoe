@@ -38,25 +38,16 @@ describe("TicTacToe", function(){
     expect(myGame.checkField([0, 1])).toEqual("O");
   })
 
-  it("should check if a row is the same player", function(){
+  it("should return true when it is the same player in the row", function(){
     field = new Field();
     field.player = "X";
     row = [field, field, field];
     expect(myGame.isSamePlayer(row)).toBeTruthy()
   });
 
-  it("should check if a row is the same player", function(){
+  it("should return false when it is not the same player in the row", function(){
     field = new Field();
     row = [field, field, field];
-    expect(myGame.isSamePlayer(row)).toBeFalsy()
-  });
-
-  it("should check if a row is the same player", function(){
-    field = new Field();
-    field.player = "X";
-    fieldO = new Field();
-    fieldO.player = "O";
-    row = [field, field, fieldO];
     expect(myGame.isSamePlayer(row)).toBeFalsy()
   });
 
@@ -95,5 +86,14 @@ describe("TicTacToe", function(){
     field.player = "X"
     myGame.board.fields = [[field, field, field], [field, field, field], [field, field, field]];
     expect( function(){myGame.place([0,0])}).toThrow(new Error("Can't place on the field: Board is full"));
+  })
+
+  it("should return an error when game has found its winner", function(){
+    myGame.place([0,0]);
+    myGame.place([1,0]);
+    myGame.place([1,1]);
+    myGame.place([1,2]);
+    myGame.place([2,2]);
+    expect( function(){myGame.place([2,1])}).toThrow(new Error("Can't place on the field: Game has found its winner"));
   })
 });

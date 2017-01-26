@@ -24,6 +24,9 @@ TicTacToe.prototype.place = function(placement){
   if(this.board.isFull()) {
     throw new Error("Can't place on the field: Board is full")
   }
+  else if(this.isGameFinished()) {
+    throw new Error("Can't place on the field: Game has found its winner")
+  }
   else {
     var field = this.findField(placement);
     field.place(this.isTurn());
