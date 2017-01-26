@@ -11,4 +11,11 @@ describe("Field", function(){
     myField.place(playerX);
     expect(myField.takenBy()).toEqual("X");
   });
+
+  it("should not allow a player to select a occupied field", function(){
+    playerX = new Player("X");
+    playerO = new Player("O");
+    myField.place(playerX);
+    expect( function(){myField.place(playerO);}).toThrow(new Error("You can't select that field: Field is already taken"));
+  });
 });

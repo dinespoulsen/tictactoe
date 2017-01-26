@@ -3,7 +3,11 @@ function Field(){
 };
 
 Field.prototype.place = function(currentPlayer){
-  this.player = currentPlayer.type;
+  if(this.player != null) {
+  throw new Error("You can't select that field: Field is already taken")}
+  else {
+    this.player = currentPlayer.type;
+  }
 };
 
 Field.prototype.takenBy = function(){
