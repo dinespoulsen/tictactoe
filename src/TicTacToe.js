@@ -25,6 +25,15 @@ TicTacToe.prototype.place = function(placement){
   field.place(this.isTurn());
 };
 
+TicTacToe.prototype.isSamePlayer = function(row){
+  for(var i = 1; i < row.length; i += 1) {
+    if(row[0] !== row[i]){
+      return false;
+    }
+  }
+    return true;
+};
+
 TicTacToe.prototype.isGameFinished = function(){
   var firstRow = this.board.fields[0];
   var output = true;
