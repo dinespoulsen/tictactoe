@@ -36,6 +36,13 @@ TicTacToe.prototype.isSamePlayer = function(row){
 
 TicTacToe.prototype.isGameFinished = function(){
   var firstRow = this.board.fields[0];
+  var secondRow = this.board.fields[1];
+  var thirdRow = this.board.fields[2];
+  var topRow = [this.board.fields[0][0], this.board.fields[1][0], this.board.fields[2][0]];
+  var middleRow = [this.board.fields[0][1], this.board.fields[1][1], this.board.fields[2][1]];
+  var bottomRow = [this.board.fields[0][2], this.board.fields[1][2], this.board.fields[2][2]];
+  var leftTopBottomRight = [this.board.fields[0][0], this.board.fields[1][1], this.board.fields[2][2]];
+  var leftBottomTopRight = [this.board.fields[0][2], this.board.fields[1][1], this.board.fields[2][0]];
   var output = true;
   var name = [];
   firstRow.forEach(function(field){
