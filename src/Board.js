@@ -25,10 +25,13 @@ Board.prototype.isSamePlayer = function(row){
 };
 
 Board.prototype.isFull = function(){
-  var output = false;
+  var output = true;
   this.fields.forEach(function(row){
     row.forEach(function(field){
-      console.log(field.isTaken());
+      if(!field.isTaken()) {
+        output = false;
+      }
     });
   });
+  return output;
 };

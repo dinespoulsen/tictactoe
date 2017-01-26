@@ -21,8 +21,13 @@ TicTacToe.prototype.checkField = function(placement){
 };
 
 TicTacToe.prototype.place = function(placement){
-  var field = this.findField(placement);
-  field.place(this.isTurn());
+  if(this.board.isFull()) {
+    throw new Error("Can't place on the field: Board is full")
+  }
+  else {
+    var field = this.findField(placement);
+    field.place(this.isTurn());
+  }
 };
 
 TicTacToe.prototype.isSamePlayer = function(row){

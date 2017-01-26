@@ -26,7 +26,7 @@ describe("Board", function(){
     expect(myBoard.isSamePlayer(row)).toBeFalsy();
   })
 
-  it("should be false when a board is full", function(){
+  it("should be false when a board is not full", function(){
     field = new Field();
     fieldO = new Field();
     fieldO.player = "O"
@@ -37,7 +37,7 @@ describe("Board", function(){
   it("should be true when a board is full", function(){
     field = new Field();
     field.player = "X"
-    myBoard.fields = [[field, field, field], [field, field, field], [field, field, fieldO]];
-    expect(myBoard.isFull()).toBeFalsy();
+    myBoard.fields = [[field, field, field], [field, field, field], [field, field, field]];
+    expect(myBoard.isFull()).toBeTruthy();
   })
 });

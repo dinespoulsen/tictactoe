@@ -52,4 +52,11 @@ describe("TicTacToe", function(){
     myGame.place([2,2]);
     expect(myGame.isGameFinished()).toBeTruthy();
   })
+
+  it("should return an error when trying to place when board is full", function(){
+    field = new Field();
+    field.player = "X"
+    myGame.board.fields = [[field, field, field], [field, field, field], [field, field, field]];
+    expect( function(){myGame.place([0,0])}).toThrow(new Error("Can't place on the field: Board is full"));
+  })
 });
