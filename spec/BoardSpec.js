@@ -25,4 +25,10 @@ describe("Board", function(){
     var row = [fieldX, fieldO, fieldX];
     expect(myBoard.isSamePlayer(row)).toBeFalsy();
   })
+
+  it("should be true when a board is full", function(){
+    fieldX = new Field("X");
+    myBoard.fields = [[fieldX, fieldX, fieldX], [fieldX, fieldX, fieldX], [fieldX, fieldX, fieldX]];
+    expect(myBoard.isFull).toBeTruthy(); 
+  })
 });
