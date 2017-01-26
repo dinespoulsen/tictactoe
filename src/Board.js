@@ -1,3 +1,3 @@
 function Board(){
-  this.fields = [[null, null, null], [null, null, null], [null, null, null]];
+  this.fields = [[new Field, new Field, new Field], [new Field, new Field, new Field], [new Field, new Field, new Field]];
 };
