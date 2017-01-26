@@ -15,16 +15,27 @@ describe("TicTacToe", function(){
   });
 
   it("should start with player X", function(){
-    expect(myGame.isTurn()).toEqual("X")
+    expect(myGame.isTurn().type).toEqual("X")
   })
 
   it("should be able to change turn", function(){
     myGame.changeTurn();
-    expect(myGame.isTurn()).toEqual("O")
+    expect(myGame.isTurn().type).toEqual("O")
   })
 
-  it("should be able to let a player claim a field", function(){
+  it("should be able to find a field", function(){
+    expect(myGame.findField([0, 0])).toEqual(jasmine.any(Field));
+  })
+
+  it("should be able to let starting player claim a field", function(){
     myGame.place([0,0])
-    expect(myGame.checkField()).toEqual("X");
+    expect(myGame.checkField([0, 0])).toEqual("X");
+  })
+
+  it("should be able to let player 2 claim a field", function(){
+    myGame.place([0,0]);
+    myGame.changeTurn();
+    myGame.place([0,1]);
+    expect(myGame.checkField([0, 1])).toEqual("O");
   })
 });
