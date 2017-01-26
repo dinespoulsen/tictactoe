@@ -33,7 +33,7 @@ TicTacToe.prototype.place = function(placement){
 
 TicTacToe.prototype.isSamePlayer = function(row){
   for(var i = 1; i < row.length; i += 1) {
-    if(row[0].player !== row[i].player){
+    if(row[0].player !== row[i].player || row[0].player === null){
       return false;
     }
   }
@@ -45,8 +45,11 @@ TicTacToe.prototype.isGameFinished = function(){
   var output = false;
   game = this
   rows.forEach(function(row){
-    if(game.board.isSamePlayer(row)) {
-          output = row;
+    if(game.isSamePlayer(row)) {
+          return output = true;
+    }
+    else {
+      return row
     }
   });
   return output;

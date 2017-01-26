@@ -38,11 +38,42 @@ describe("TicTacToe", function(){
     expect(myGame.checkField([0, 1])).toEqual("O");
   })
 
-  it("should be able to know when a player has all of first row", function(){
+  it("should check if a row is the same player", function(){
+    field = new Field();
+    field.player = "X";
+    row = [field, field, field];
+    expect(myGame.isSamePlayer(row)).toBeTruthy()
+  });
+
+  it("should check if a row is the same player", function(){
+    field = new Field();
+    row = [field, field, field];
+    expect(myGame.isSamePlayer(row)).toBeFalsy()
+  });
+
+  it("should check if a row is the same player", function(){
+    field = new Field();
+    field.player = "X";
+    fieldO = new Field();
+    fieldO.player = "O";
+    row = [field, field, fieldO];
+    expect(myGame.isSamePlayer(row)).toBeFalsy()
+  });
+
+  it("should return true when a player has all of first row", function(){
+    myGame.place([0,0]);
+    myGame.place([1,1]);
+    myGame.place([0,1]);
+    myGame.place([1,2]);
+    myGame.place([0,2]);
+    expect(myGame.isGameFinished()).toBeTruthy();
+  })
+
+  it("should return false when a winner has not been found", function(){
     myGame.place([0,0]);
     myGame.place([0,1]);
     myGame.place([0,2]);
-    expect(myGame.isGameFinished()).toBeTruthy();
+    expect(myGame.isGameFinished()).toBeFalsy();
   })
 
   it("should be able to call out the winner", function(){
