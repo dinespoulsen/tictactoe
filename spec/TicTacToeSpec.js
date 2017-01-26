@@ -40,12 +40,18 @@ describe("TicTacToe", function(){
   })
 
   it("should be able check to check if a row is occupied by same player", function(){
-    var row = ["X", "X", "X"];
+    var field = new Field("X");
+    field.player = "X"
+    var row = [field, field, field];
     expect(myGame.isSamePlayer(row)).toBeTruthy();
   })
 
   it("should be able check to check if a row is occupied by same player", function(){
-    var row = ["X", "O", "X"];
+    fieldX = new Field("X");
+    fieldX.player = "X"
+    fieldO = new Field("O");
+    fieldO.player = "O"
+    var row = [fieldX, fieldO, fieldX];
     expect(myGame.isSamePlayer(row)).toBeFalsy();
   })
 
